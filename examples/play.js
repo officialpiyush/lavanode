@@ -13,7 +13,7 @@ const lavalinkConfig = {
 const link = new Lavalink(lavalinkConfig);
 
 client.on('message', async m => {
-    const args = message.content.slice(1).trim().split(/ +/g);
+    const args = m.content.slice(1).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
 
     if (command === "play") {
