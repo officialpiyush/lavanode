@@ -3,8 +3,7 @@ const { Node } = require('./Node.js');
 
 /**
  * @typedef {Object} NodeConfig Configuration for a single lavalink node
- * @prop {String} rest The rest url for the lavalink node
- * @prop {String} ws The websocket url for the lavalink node
+ * @prop {String} host The host url for the lavalink node
  * @prop {String} [password=youshallnotpass] The password for the lavalink node
  */
 
