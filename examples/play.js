@@ -4,7 +4,7 @@ const { Lavalink, Queue } = require('node-lavalink');
 
 const lavalinkConfig = {
     nodes: [
-        {rest: "ip:port", ws: "ip:port"}
+        {host: "ip:port"}
     ],
     id: '12345678910',
     shards: 1
