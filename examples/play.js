@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const { Lavalink, Queue } = require('node-lavalink');
+const { Lavalink, Queue } = require('lavanode');
 
 const lavalinkConfig = {
     nodes: [
