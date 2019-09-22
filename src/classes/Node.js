@@ -14,14 +14,13 @@ class Node {
      */
     constructor(config, lavalink) {
         this.config = config;
-        if (!this.config.rest) throw new Error('A rest url for a node is required');
-        if (!this.config.ws) throw new Error('A ws url for a node is required');
+        if (!this.config.host) throw new Error('A host url for a node is required');
         if (!this.config.password) this.config.password = 'youshallnotpass';
 
         this.lavalink = lavalink;
         this.rest = new Rest(config, this);
 
-        this.ws = new WebSocket(`ws://${this.config.ws}`, {
+        this.ws = new WebSocket(`ws://${this.config.host}`, {
             headers: {
                 'Authorization': this.config.password,
                 'Num-Shards': this.lavalink.config.shards,

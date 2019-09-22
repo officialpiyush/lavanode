@@ -12,6 +12,15 @@ const lavalinkConfig = {
 
 const link = new Lavalink(lavalinkConfig);
 
+link.on('forwardWs', (serverId, data) => {
+    if (client.guilds.has(serverId)) client.ws.connection.ws.send(data);
+});
+
+client.on('raw', pk => {
+    if (pk.t === 'VOICE_STATE_UPDATE') link.voiceStateUpdate(pk.d);
+    if (pk.t === 'VOICE_SERVER_UPDATE') link.voiceServerUpdate(pk.d);
+});
+
 client.on('message', async m => {
     const args = message.content.slice(1).trim().split(/ +/g);
     const command = args.shift().toLowerCase();

@@ -43,7 +43,7 @@ class Rest {
      * @returns {Promise<Array<Track>|Playlist>} The array of tracks returned or the playlist object
      */
     async search(query) {
-        const url = new URL(`http://${this._config.rest}/loadtracks`);
+        const url = new URL(`http://${this._config.host}/loadtracks`);
         url.searchParams.append('identifier', query);
 
         const response = await fetch(url, {
@@ -61,10 +61,13 @@ class Rest {
 
         switch (data.loadType) {
             case 'TRACK_LOADED':
+                return {
+                    tracks: data.tracks
+                };
             case 'SEARCH_RESULT':
+                return data;
             case 'NO_MATCHES':
                 return data.tracks;
-
             case 'PLAYLIST_LOADED':
                 return {
                     name: data.playlistInfo.name,
